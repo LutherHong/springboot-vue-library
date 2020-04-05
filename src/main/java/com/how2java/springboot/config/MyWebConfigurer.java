@@ -8,6 +8,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.Arrays;
+
 @SpringBootConfiguration
 public class MyWebConfigurer implements WebMvcConfigurer {
     // 后台拦截
@@ -18,7 +20,10 @@ public class MyWebConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(getLoginIntercepter()).addPathPatterns("/**").excludePathPatterns("/index.html");
+        registry.addInterceptor(getLoginIntercepter())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/index.html")
+                .excludePathPatterns(Arrays.asList("/index.html","/api/login","/api/logout"));
     }
 
     // 跨域请求，可以在controller层里添加@CrossOrigin解决，也可以在这里加
