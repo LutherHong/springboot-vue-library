@@ -40,6 +40,7 @@ public class LoginController {
         String username = requestUser.getUsername();
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, requestUser.getPassword());
+        usernamePasswordToken.setRememberMe(true);
         try {
             subject.login(usernamePasswordToken);
             return ResultFactory.buildSuccessResult(username);
@@ -85,4 +86,8 @@ public class LoginController {
         return ResultFactory.buildSuccessResult(user);
     }
 
+    @GetMapping("/api/authentication")
+    public String authentication() {
+        return "身份认证成功";
+    }
 }

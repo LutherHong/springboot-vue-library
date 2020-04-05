@@ -31,8 +31,9 @@ public class MyWebConfigurer implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         //所有请求都允许跨域
         registry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedMethods("*")
+                .allowCredentials(true)
+                .allowedOrigins("http://localhost:8080")
+                .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
                 .allowedHeaders("*");
     }
 
