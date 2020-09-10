@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class LibraryController {
     @Autowired
     BookService bookService;
@@ -58,6 +59,7 @@ public class LibraryController {
      * @param file
      * @return
      */
+    @CrossOrigin
     @PostMapping("api/covers")
     public String coversUpload(MultipartFile file) {
         String folder = "C:\\Users\\zhaozhihong\\Pictures\\Camera Roll";
